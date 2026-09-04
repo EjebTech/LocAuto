@@ -27,7 +27,7 @@
             exit;
         }
 
-        //Changer le logo (si possible)
+        //Changer le logo (si souhaité)
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nom_marque=$_POST['nom_marque'];
             $logo_final = $marque['LogoMarq']; //nom de l'ancien logo

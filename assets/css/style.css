@@ -1,7 +1,16 @@
-/* Style pour les logos du tableau */
+/* Style pour les logos des vehicules */
 .logo_img{
     width: 80px;
     height: 50px;
     object-fit: contain; /*Conserve la qualité de l'image même quand déformée*/
     border-radius: 4px;  
+}
+
+/* Style pour les images des véhicules*/
+
+.vehicule_img{
+    width: 120px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 4px;
 }

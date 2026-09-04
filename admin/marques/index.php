@@ -50,6 +50,6 @@
         
     </table>
 
-    <a href="create.php">Ajouter un véhicule</a>
+    <a href="create.php">Ajouter une marque</a>
 </body>
 </html>

@@ -1,0 +1,7 @@
+/* Style pour les logos du tableau */
+.logo_img{
+    width: 80px;
+    height: 50px;
+    object-fit: contain; /*Conserve la qualité de l'image même quand déformée*/
+    border-radius: 4px;  
+}

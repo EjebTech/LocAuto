@@ -11,17 +11,45 @@
         $req = $conn->query("SELECT * FROM Marque");
         $marques = $req->fetchAll();
 
-        if($_SERVER['REQUEST_METHOD'] === $_POST ){
-            $immat = $_POST['imm_vehicule'];
-            
-            
+        //Envoi de l'image
+        if($_SERVER['REQUEST_METHOD'] === 'POST' ){
+            $immat = trim($_POST['imm_vehicule']);
+            $couleur_vehicule = trim($_POST['couleur_vehicule']);
+            $prix = trim($_POST['prix_jour']);
+            $marque_vehicule = $_POST['marque_vehicule'];
+            $modele = $_POST['modele_vehicule'];
+            $new_name = null;
+
+            if(isset($_FILES['image_vehicle']) && $_FILES['image_vehicle']['error'] == 0){
+                $img_file_name = $_FILES['image_vehicle']['name'];
+                $img_file_ext = strtolower(pathinfo($img_file_name, PATHINFO_EXTENSION));
+                $img_tmp_name = $_FILES['image_vehicle']['tmp_name'];
+                $new_name = uniqid('Vehicule_') . '.' . $img_file_ext;
+                
+                
+                $extensions_autorisees = ['jpg','png', 'webp', 'jpeg'];
+                if(in_array($img_file_ext, $extensions_autorisees)){
+                    if(move_uploaded_file($img_tmp_name, "../../assets/uploads/vehicules/" . $new_name)){
+                        echo "Fichier envoyé avec succès";
+                    }
+                }else{
+                    echo "Seuls les extensions 'jpg, jpeg, webp et png' sont autorisées";
+                }
+                
+            }
+
+            $req2 = $conn->prepare("INSERT INTO Vehicule VALUES(NULL,?,?,?,?,?,?,?,?)");
+            $req2->execute([$new_name, $immat, $modele, $couleur_vehicule, 'Disponible', $prix, $marque_vehicule, ]);
+            if($req2){
+                header("Location: index.php");
+            }
         }
     ?>
 
 
     <form action="" method="post" enctype="multipart/form-data">
         <label>Entrez l'image du véhicule : </label>
-        <input type="file" action="image/*">
+        <input type="file" name="image_vehicle" action="image/*">
         <br><br>
 
         <label>Immatriculation : </label>
@@ -33,7 +61,7 @@
         <br><br>
 
         <label>Couleur : </label>
-        <input type="text" required>
+        <input type="text" name="couleur_vehicule" required>
         <br><br>
 
         <label>Prix journalier : </label>

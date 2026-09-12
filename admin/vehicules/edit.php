@@ -133,12 +133,14 @@ include("../../includes/header.php");
                 </div>
             </div>
             
-            <div>
-                <label>Image actuelle : </label>
+            <div class="form-group image-preview-container">
+                <label>Image actuelle :</label>
                 <?php if(!empty($vehicule['ImgVeh'])): ?>
-                    <img class="vehicule_img" src="../../assets/uploads/vehicules/<?=htmlspecialchars($vehicule['ImgVeh'])?>" alt="Image du véhicule actuel">
+                    <div class="img-wrapper">
+                        <img class="vehicule_img_preview" src="../../assets/uploads/vehicules/<?=htmlspecialchars($vehicule['ImgVeh'])?>" alt="Image du véhicule actuel">
+                    </div>
                 <?php else: ?>
-                    <p>Aucune image enregistrée.</p>
+                    <p class="no-img-text">Aucune image enregistrée.</p>
                 <?php endif; ?>
             </div>
             

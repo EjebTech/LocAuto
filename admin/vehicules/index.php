@@ -6,7 +6,7 @@ include("../../includes/header.php");
     <a href="create.php" class="btn_ajout">Ajouter un véhicule</a>
     <?php
         include("../../config/db.php");
-        $req = $conn->query("SELECT v.*, m.Marqlib, s.NomSite FROM Vehicule v JOIN Marque m ON v.MarqId = m.MarqId JOIN Site s ON v.NumSite = s.NumSite");
+        $req = $conn->query("SELECT v.*, m.Marqlib, s.NomSite FROM Vehicule v JOIN Marque m ON v.MarqId = m.MarqId JOIN Site s ON v.NumSite = s.NumSite ORDER BY ImgVeh DESC");
         $vehiculesXmarquesXsites = $req->fetchAll();
         
     ?>

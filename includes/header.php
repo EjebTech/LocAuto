@@ -10,7 +10,7 @@
 <body>
     <header class="nav-bar">
         <div class="title">
-            <h1><span>L</span>oc<span>A</span>uto</h1>
+            <h1><a style="color: white; text-decoration: none;" href="/LocAuto/admin/index.php"><span>L</span>oc<span>A</span>uto</a></h1>
         </div>
         <nav>
             <ul>

@@ -1,15 +1,188 @@
-/* Style pour les logos des vehicules */
-.logo_img{
-    width: 80px;
-    height: 50px;
-    object-fit: contain; /*Conserve la qualité de l'image même quand déformée*/
-    border-radius: 4px;  
+:root {
+    --bg-dark: #2B2D42;      /* Gris Anthracite pour les grands blocs de structure ou d'en-tête*/
+    --accent-red: #D90429;   /* Rouge Sport pour les actions principales comme les boutons, liens et autres*/
+    --accent-hover: #EF233C; /* Rouge clair pour les survols */
+    --bg-light: #EDF2F4;     /* Gris Perle (fond des pages et cartes et formulaires) */
+    --text-white: #FFFFFF;   /*pour la lisibilité des textes sur les --bg-dark*/
+    --text-dark: #2B2D42;    /*Pour les textes placés sur fond clair*/
 }
 
-/* Style pour les images des véhicules*/
-.vehicule_img{
-    width: 120px;
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/*Barre de navigation*/
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-dark);
+    padding: 15px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.nav-bar .title h1 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--text-white);
+    letter-spacing: 1px;
+}
+
+.nav-bar .title span {
+    color: var(--accent-red);
+}
+
+.nav-bar nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-bar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar nav ul li a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-bar nav ul li a:hover {
+    color: var(--text-white);
+    background-color: var(--accent-red);
+}
+
+.nav-bar .user-icon {
+    color: var(--text-white);
+    font-size: 22px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-bar .user-icon:hover {
+    color: var(--accent-red);
+}
+
+/*Contenu principal (main content)*/
+.main-content {
+    flex: 1;
+    padding: 30px;
+    max-width: 1700px;
+    width: 100%;
+    margin: 0  auto;
+    box-sizing: border-box;
+    margin-top: 70px
+}
+
+.footer-bar {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    text-align: center;
+    padding: 15px 0;
+    margin-top: auto;
+    border-top: 3px solid var(--accent-red);
+}
+
+.footer-bar p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer-bar span {
+    color: var(--accent-red);
+    font-weight: bold;
+}
+
+/*Images véhicules/marques*/
+.logo_img {
+    width: 90px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.vehicule_img {
+    width: 100%;
     height: 80px;
     object-fit: contain;
     border-radius: 4px;
+}
+
+/*Les tableaux*/
+table{
+    width: 100%;
+    text-align: center;
+    border: 5px solid var(--bg-dark);
+    font-weight: 500;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead{
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(even){
+    background-color: #f3f3f3;
+}
+
+table tbody a{
+    border: 1px solid var(--text-dark);
+    text-decoration: none;
+    color: var(--text-white);
+    padding: 5px;
+    background-color: var(--bg-dark);
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 4px;
+}
+
+table tbody a:hover{
+    background-color: var(--accent-hover);
+}
+
+.table_marques  tbody td:last-child{
+    width: 500px;
+    word-spacing: 15px;
+}
+
+.btn_ajout , .btn_retour {
+    margin-bottom: 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    padding: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    
+}
+
+
+.btn_ajout:hover , .btn_retour:hover{
+    background-color: var(--accent-hover);
 }

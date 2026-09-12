@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Insertion d'un véhicule</h1>
+    
     <?php
         include("../../config/db.php");
         $req = $conn->query("SELECT * FROM Marque");
@@ -96,6 +97,6 @@
         <button type="submit">Ajouter</button>
     </form>
     <br>
-    <a href="index.php">Retour</a>
+    <a href="index.php" class="btn_retour">Retour à la gestion des véhicules</a>
 </body>
 </html>

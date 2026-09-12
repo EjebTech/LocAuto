@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
+    <?php include("../../includes/header.php");?>
     <h1>Liste des véhicules</h1>
+    <a href="create.php" class="btn_ajout">Ajouter un véhicule</a>
     <?php
         include("../../config/db.php");
         $req = $conn->query("SELECT v.*, m.Marqlib, s.NomSite FROM Vehicule v JOIN Marque m ON v.MarqId = m.MarqId JOIN Site s ON v.NumSite = s.NumSite");
@@ -15,7 +17,7 @@
         
     ?>
     
-    <table border="3">
+    <table border="4">
         <thead>
             <tr>
                 <th>Visuel</th>
@@ -49,10 +51,11 @@
                         <td><?= htmlspecialchars($vehicule['ModeleVeh']) ?></td>
                         <td><?= htmlspecialchars($vehicule['CoulVeh']) ?></td>
                         <td><?= htmlspecialchars($vehicule['StatutVeh']) ?></td>
-                        <td><?= htmlspecialchars($vehicule['PrixJour']) ?></td>
+                        <td><?= htmlspecialchars($vehicule['PrixJour']) ?> FCFA</td>
                         <td><?= htmlspecialchars($vehicule['NomSite']) ?></td>
                         <td>
                             <a href="edit.php?id=<?=$vehicule['ImVeh']?>">Modifier</a>
+                            /
                             <a href="delete.php?id=<?=$vehicule['ImVeh']?>">Supprimer</a>
                         </td>
                     </tr>
@@ -60,5 +63,4 @@
             <?php endif;?>
         </tbody>
     </table>
-</body>
-</html>
+<?php include("../../includes/footer.php");?>

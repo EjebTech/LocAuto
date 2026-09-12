@@ -17,7 +17,7 @@
                 }
             }
 
-            //Suppression du logo
+            //Suppression de la marque
             $del_logo = $conn->prepare("DELETE FROM Marque WHERE MarqId=?");
             $del_logo->execute([$id]);
             

@@ -10,6 +10,8 @@
         include("../../config/db.php");
         $req = $conn->query("SELECT * FROM Marque");
         $marques = $req->fetchAll();
+        $req2=$conn->query("SELECT * FROM Site");
+        $sites = $req2->fetchAll();
 
         //Envoi de l'image
         if($_SERVER['REQUEST_METHOD'] === 'POST' ){
@@ -19,6 +21,7 @@
             $marque_vehicule = $_POST['marque_vehicule'];
             $modele = $_POST['modele_vehicule'];
             $new_name = null;
+            $site = $_POST['site'];
 
             if(isset($_FILES['image_vehicle']) && $_FILES['image_vehicle']['error'] == 0){
                 $img_file_name = $_FILES['image_vehicle']['name'];
@@ -29,19 +32,20 @@
                 
                 $extensions_autorisees = ['jpg','png', 'webp', 'jpeg'];
                 if(in_array($img_file_ext, $extensions_autorisees)){
-                    if(move_uploaded_file($img_tmp_name, "../../assets/uploads/vehicules/" . $new_name)){
-                        echo "Fichier envoyé avec succès";
-                    }
+                    move_uploaded_file($img_tmp_name, "../../assets/uploads/vehicules/" . $new_name);
+                     
                 }else{
                     echo "Seuls les extensions 'jpg, jpeg, webp et png' sont autorisées";
                 }
                 
             }
 
-            $req2 = $conn->prepare("INSERT INTO Vehicule VALUES(NULL,?,?,?,?,?,?,?,?)");
-            $req2->execute([$new_name, $immat, $modele, $couleur_vehicule, 'Disponible', $prix, $marque_vehicule, ]);
-            if($req2){
+            $req3 = $conn->prepare("INSERT INTO Vehicule (ImgVeh, Imveh, ModeleVeh, CoulVeh, StatutVeh, PrixJour, MarqId, NumSite) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $req3->execute([$new_name, $immat, $modele, $couleur_vehicule, 'Disponible', $prix, $marque_vehicule, $site]);
+            if($req3){
                 header("Location: index.php");
+                exit;
             }
         }
     ?>
@@ -49,7 +53,7 @@
 
     <form action="" method="post" enctype="multipart/form-data">
         <label>Entrez l'image du véhicule : </label>
-        <input type="file" name="image_vehicle" action="image/*">
+        <input type="file" name="image_vehicle" accept="image/*">
         <br><br>
 
         <label>Immatriculation : </label>
@@ -73,6 +77,16 @@
             <?php if($marques) :?>
                 <?php foreach($marques as $marque):?>
                     <option value="<?= htmlspecialchars($marque['MarqId']) ?>"><?=htmlspecialchars($marque['Marqlib'])?></option>
+                <?php endforeach ?>
+            <?php endif;?>
+        </select>
+        <br><br>
+
+        <label>Site : </label>
+        <select name="site">
+            <?php if($sites) :?>
+                <?php foreach($sites as $site):?>
+                    <option value="<?= htmlspecialchars($site['NumSite']) ?>"><?=htmlspecialchars($site['NomSite'])?></option>
                 <?php endforeach ?>
             <?php endif;?>
         </select>

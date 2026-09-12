@@ -51,8 +51,8 @@
                         <td><?= htmlspecialchars($vehicule['PrixJour']) ?></td>
                         <td><?= htmlspecialchars($vehicule['NomSite']) ?></td>
                         <td>
-                            <a href="edit.php?id=<?=$vehicule['Imveh']?>">Modifier</a>
-                            <a href="delete.php?id=<?=$vehicule['Imveh']?>">Supprimer</a>
+                            <a href="edit.php?id=<?=$vehicule['ImVeh']?>">Modifier</a>
+                            <a href="delete.php?id=<?=$vehicule['ImVeh']?>">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach ?>

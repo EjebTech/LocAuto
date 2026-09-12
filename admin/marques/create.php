@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 
 <?php
 if($_SERVER['REQUEST_METHOD']==='POST'){
@@ -43,17 +35,27 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 
 
 
+<?php 
+$css_path = "../../assets/css/style.css";
+include("../../includes/header.php"); 
+?>
 
-
-
-    <h1>Ajouter une marque</h1>
-    <form action="create.php" method="POST" enctype="multipart/form-data">
-        <label>Nom : </label><input type="text" name="nom_marque"  placeholder="Entrez le nom de la marque">
-        <br>
-        <input type="file" name="image_file" accept="image/*">
-        <button type="submit">Ajouter</button>
+<div class="formulaire_vehicule">
+    <div class="form_header">
+        <h2><i class="fa-solid fa-car"></i> Ajouter une Marque</h2>
+        <a href="index.php"><i class="fa-solid fa-arrow-left"></i> Retour à la liste</a>
+    </div>
+    <form action="create.php"  class="admin_form" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Nom : </label><input type="text" name="nom_marque"  placeholder="Entrez le nom de la marque">
+        </div>
+        <div class="form-group">
+            <input type="file" name="image_file" accept="image/*">
+        </div>
+        <div class="form-row">
+            <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Enregistrer la marque</button>
+                <button type="reset"><i class="fa-solid fa-rotate-left"></i> Réinitialiser</button>
+        </div>
     </form>
-
-    <a href="index.php"><-Retour</a>
-</body>
-</html>
+</div>
+<?php include("../../includes/footer.php");  ?>

@@ -30,21 +30,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Modifier un site</title>
-</head>
-<body>
-    <h1>Modifier le site</h1>
-    <form action="" method="post">
-        <label>Nom du site : </label>
-        <input type="text" name="nom_site" value="<?= htmlspecialchars($site['NomSite']) ?>" required>
-        <br><br>
-        <button type="submit">Modifier</button>
-    </form>
-    <br>
-    <a href="index.php">Retour</a>
-</body>
-</html>
+<?php 
+$css_path = "../../assets/css/style.css";
+include("../../includes/header.php"); 
+?>
+    <<div class="formulaire_vehicule">
+        <form method="POST" class="admin_form" enctype="multipart/form-data">
+            <div class="form_header">
+                <h2><i class="fa-solid fa-car"></i> Modiifer un site</h2>
+                <a href="index.php"><i class="fa-solid fa-arrow-left"></i> Retour à la liste</a>
+            </div>
+
+            <div class="form-group">
+                <label>Nom : </label><input type="text" name="nom_site" value="<?= htmlspecialchars($site['NomSite']) ?>" >
+            </div>
+
+            
+            <div class="form-row">    
+                <button type="submit"><i class="fa-solid fa-pencil"></i> Modifier le site</button>
+            </div>
+        </form>
+    </div>
+<?php include("../../includes/footer.php");  ?>

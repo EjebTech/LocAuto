@@ -15,21 +15,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 ?>
 
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Ajouter un site</title>
-</head>
-<body>
-    <h1>Ajouter un nouveau site</h1>
-    <form action="" method="post">
-        <label>Nom du site : </label>
-        <input type="text" name="nom_site" required>
-        <br><br>
-        <button type="submit">Ajouter</button>
+<?php 
+$css_path = "../../assets/css/style.css";
+include("../../includes/header.php"); 
+?>
+
+<div class="formulaire_vehicule">
+    <div class="form_header">
+        <h2><i class="fa-solid fa-car"></i> Ajouter un site</h2>
+        <a href="index.php"><i class="fa-solid fa-arrow-left"></i> Retour à la liste</a>
+    </div>
+    <form action="create.php"  class="admin_form" method="POST" >
+        <div class="form-group">
+            <label>Nom : </label><input type="text" name="nom_site"  placeholder="Entrez le nom du site">
+        </div>
+        <div class="form-row">
+            <button type="submit"><i class="fa-solid fa-floppy-disk"></i> Enregistrer le site</button>
+                <button type="reset"><i class="fa-solid fa-rotate-left"></i> Réinitialiser</button>
+        </div>
     </form>
-    <br>
-    <a href="index.php">Retour</a>
-</body>
-</html>
+</div>
+    
+<?php include("../../includes/footer.php");  ?>     

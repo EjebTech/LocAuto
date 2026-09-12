@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
-</head>
-<body>
+<
     <?php
         include("../../config/db.php");
         
@@ -56,25 +48,37 @@
         }
 
     ?>
+<?php 
+$css_path = "../../assets/css/style.css";
+include("../../includes/header.php"); 
+?>
+    <div class="formulaire_vehicule">
+        <form method="POST" class="admin_form" enctype="multipart/form-data">
+            <div class="form_header">
+                <h2><i class="fa-solid fa-car"></i> Modiifer une marque</h2>
+                <a href="index.php"><i class="fa-solid fa-arrow-left"></i> Retour à la liste</a>
+            </div>
 
-    <h1>Modifier une marque</h1>
+            <div class="form-group">
+                <label>Nom : </label><input type="text" name="nom_marque" value="<?= htmlspecialchars($marque['Marqlib']) ?>" placeholder="Entrez le nom de la marque">
+            </div>
 
-    <form method="POST" enctype="multipart/form-data">
-        <label>Nom : </label><input type="text" name="nom_marque" value="<?= htmlspecialchars($marque['Marqlib']) ?>" placeholder="Entrez le nom de la marque">
-        <br><br>
-        <label>Logo actuel :</label><br>
-        <?php if (!empty($marque['LogoMarq'])): ?>
-            <img class="logo_img" src="../../assets/uploads/logos/<?= htmlspecialchars($marque['LogoMarq']) ?>" alt="Logo actuel">
-        <?php else: ?>
-            <p>Pas de logo actuellement</p>
-        <?php endif; ?>
-        <br>
-        <label>Changer le logo (optionnel) : </label>
-        <br><br>
-        <input type="file" name="image_file" accept="image/*">
-        <br>
-        <button type="submit">Enregistrer les modifications</button>
-        <a href="index.php">Annuler</a>
-    </form>
-</body>
-</html>
+            <div class="form-group">
+                <label>Logo actuel :</label>
+                <?php if (!empty($marque['LogoMarq'])): ?>
+                    <img class="logo_img" src="../../assets/uploads/logos/<?= htmlspecialchars($marque['LogoMarq']) ?>" alt="Logo actuel">
+                <?php else: ?>
+                    <p>Pas de logo actuellement</p>
+                <?php endif; ?>
+            </div>
+            <div class="form-group">    
+                <label>Changer le logo (optionnel) : </label>
+                
+                <input type="file" name="image_file" accept="image/*">
+            </div>
+            <div class="form-row">    
+                <button type="submit"><i class="fa-solid fa-pencil"></i> Modifier la marque</button>
+            </div>
+        </form>
+    </div>
+<?php include("../../includes/footer.php");?>

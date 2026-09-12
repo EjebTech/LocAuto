@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap');
 :root {
     --bg-dark: #2B2D42;      /* Gris Anthracite pour les grands blocs de structure ou d'en-tête*/
     --accent-red: #D90429;   /* Rouge Sport pour les actions principales comme les boutons, liens et autres*/
@@ -11,12 +13,14 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Archivo", "Familjen Grotesk",  sans-serif;
+    font-weight: 300;
     background-color: var(--bg-light);
     color: var(--text-dark);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-size: 14px;
 }
 
 /*Barre de navigation*/
@@ -150,20 +154,22 @@ tbody tr:nth-child(even){
     background-color: #f3f3f3;
 }
 
-table tbody a{
+table tbody td a{
     border: 1px solid var(--text-dark);
     text-decoration: none;
     color: var(--text-white);
     padding: 5px;
     background-color: var(--bg-dark);
-    transition: background-color 0.3s ease;
     border: none;
     border-radius: 4px;
+    
 }
 
-table tbody a:hover{
+
+table tbody a:last-child{
     background-color: var(--accent-hover);
 }
+
 
 .table_marques  tbody td:last-child{
     width: 500px;
@@ -185,4 +191,110 @@ table tbody a:hover{
 
 .btn_ajout:hover , .btn_retour:hover{
     background-color: var(--accent-hover);
+}
+
+
+/*Formulaires*/
+.form_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.formulaire_vehicule{
+    border: 1px solid var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+    padding: 25px;
+    align-items: stretch;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.admin_form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-row{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group input , .form-group select{
+    width: 100%;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group input:focus , .form-group select:focus{
+    border: 2px solid var(--accent-red);
+}
+
+.form-row .form-group {
+    flex: 1; 
+}
+
+.form_header h2 i{
+    color: var(--accent-red);
+}
+
+.form_header a{
+    color: var(--text-white);
+    background-color: var(--bg-dark);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 7px;
+    transition: background-color 0.3s ease;
+
+}
+
+.form_header a:hover{
+    background-color: var(--accent-hover);
+}   
+
+.form-row button[type=submit]{
+    background-color: var(--accent-red);
+    border: none;
+    color: var(--text-white);
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+.form-row button[type=submit]:hover{
+    transform: scale(1.0765);
+}
+
+.form-row button[type=reset]{
+    background-color: var(--bg-dark);
+    border: none;
+    color: var(--text-white);
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+.form-row button[type=reset]:hover{
+    transform: scale(1.0765);
 }

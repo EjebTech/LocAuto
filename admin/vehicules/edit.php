@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
+    <h1>Modification des véhicules</h1>
     <?php
         include("../../config/db.php");
         
@@ -124,7 +125,9 @@
         <?php endforeach;?>
         
         <br><br>
-        <button type="submit">Ajouter</button>
+        <button type="submit">Modifier</button>
     </form>
+    <br>
+    <a href="index.php">Retour</a>
 </body>
 </html>

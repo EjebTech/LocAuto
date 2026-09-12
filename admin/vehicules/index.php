@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
+    <h1>Liste des véhicules</h1>
     <?php
         include("../../config/db.php");
         $req = $conn->query("SELECT v.*, m.Marqlib, s.NomSite FROM Vehicule v JOIN Marque m ON v.MarqId = m.MarqId JOIN Site s ON v.NumSite = s.NumSite");
@@ -43,7 +44,7 @@
                                 <img src="../../assets/uploads/vehicules/<?=htmlspecialchars($vehicule['ImgVeh'])?>" class="vehicule_img">
                             <?php endif;?>      
                         </td>
-                        <td><?= htmlspecialchars($vehicule['Imveh']) ?></td>
+                        <td><?= htmlspecialchars($vehicule['ImVeh']) ?></td>
                         <td><?= htmlspecialchars($vehicule['Marqlib']) ?></td>
                         <td><?= htmlspecialchars($vehicule['ModeleVeh']) ?></td>
                         <td><?= htmlspecialchars($vehicule['CoulVeh']) ?></td>
